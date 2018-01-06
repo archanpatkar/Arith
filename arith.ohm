@@ -1,0 +1,17 @@
+Arithmetic {
+  Exp = Exp "+" number -- plus
+  	  | Exp "-" number -- minus
+      | Exp "*" number -- mul
+      | Exp "/" number -- div
+      | number
+      
+  MulExp = MulExp "*" number  -- times
+         | MulExp "/" number  -- div
+         | number
+         
+  AddExp = AddExp "+" MulExp  -- plus
+         | AddExp "-" MulExp  -- minus
+         | MulExp
+         
+  number = digit+
+}
