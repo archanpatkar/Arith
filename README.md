@@ -1,2 +1,2 @@
 # Arith
-A Simple Arithmetic Language
+### An Arithmetic Language
