@@ -1,1 +1,27 @@
-{}
+{
+  "dependencies": {
+    "ohm-js": "^0.14.0"
+  },
+  "name": "arith",
+  "description": "An Arithmetic Language",
+  "version": "1.0.0",
+  "main": "Main.js",
+  "devDependencies": {},
+  "scripts": {
+    "start":"node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archanpatkar/Arith.git"
+  },
+  "keywords": [
+    "Language"
+  ],
+  "author": "Archan Patkar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/archanpatkar/Arith/issues"
+  },
+  "homepage": "https://github.com/archanpatkar/Arith#readme"
+}
