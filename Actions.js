@@ -59,6 +59,22 @@ var actions = {
     }
     return v3;
   },
+  Matrices: (_,m,__) => m.eval(),
+  MatricesExp_plus: (m1,_,m2) =>{ 
+    m1 = m1.eval();
+    m2 = m2.eval();
+    let m3 = [];
+    for(let i in m1)
+    {
+      let row = [];
+      for(let j in m1[i])
+      {
+        row.push(m1[i][j] + m2[i][j]);
+      }
+      m3.push(row)
+    }
+    return m3;
+  },
   number: (digits) => digits.eval(),
   whole: (digits) => parseInt(digits.sourceString),
   decimal: (beforeDot,_,afterDot) => parseFloat(Number(beforeDot.sourceString + "." + afterDot.sourceString))
