@@ -1,18 +1,24 @@
 Arithmetic {
-  Exp = Exp "+" number -- plus
-  	  | Exp "-" number -- minus
-      | Exp "*" number -- mul
-      | Exp "/" number -- div
-      | number
+  Exp = AddExp
       
-  MulExp = MulExp "*" number  -- times
-         | MulExp "/" number  -- div
-         | MulExp "**" number -- power
-         | number
-         
-  AddExp = AddExp "+" MulExp  -- plus
-         | AddExp "-" MulExp  -- minus
+  AddExp = AddExp_plus
+         | AddExp_minus
          | MulExp
-         
+
+  MulExp = MulExp_times
+         | MulExp_div
+         | MulExp_power
+         | number
+
+  AddExp_plus = AddExp "+" MulExp
+
+  AddExp_minus = AddExp "-" MulExp
+
+  MulExp_times = MulExp "*" number
+
+  MulExp_div = MulExp "/" number
+
+  MulExp_power = MulExp "**" number
+
   number = digit+
 }
