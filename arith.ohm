@@ -1,6 +1,7 @@
 Arithmetic {
   Exp = AddExp
       | VectorExp
+      | MatricesExp
       
   AddExp = AddExp_plus
          | AddExp_minus
@@ -18,15 +19,20 @@ Arithmetic {
             | VectorExp_pow
             | Vector
 
-  VectorExp_plus = Vector "++" Vector
+  MatricesExp = MatricesExp_plus
+              | Matrices
 
-  VectorExp_minus = Vector "--" Vector
+  MatricesExp_plus = Matrices "#" Matrices 
 
-  VectorExp_mul = Vector "**" Vector
+  VectorExp_plus = VectorExp "++" VectorExp 
 
-  VectorExp_div = Vector "//" Vector
+  VectorExp_minus = VectorExp "--" VectorExp
 
-  VectorExp_pow = Vector "^^" Vector
+  VectorExp_mul = VectorExp "**" Vector
+
+  VectorExp_div = VectorExp "//" Vector
+
+  VectorExp_pow = VectorExp "^^" Vector
 
   AddExp_plus = AddExp "+" MulExp
 
@@ -42,6 +48,10 @@ Arithmetic {
 
   Vector = "[" Sequence "]"
 
+  Matrices = "<" MultiSequence ">"
+
+  MultiSequence = ListOf<Vector,msep>
+
   number = decimal 
          | whole
           
@@ -50,4 +60,6 @@ Arithmetic {
   decimal = digit+ "." digit+
 
   sep = ","
+
+  msep = "|"
 }
