@@ -7,7 +7,9 @@ var actions = {
   MulExp_times: (n1,_,n2) => n1.eval() * n2.eval(),
   MulExp_div: (n1,_,n2) => n1.eval() / n2.eval(),
   MulExp_power: (n1,_,n2) => n1.eval() ** n2.eval(),
-  number: (digits) => parseInt(digits.sourceString)
+  number: (digits) => digits.eval(),
+  whole: (digits) => parseInt(digits.sourceString),
+  decimal: (beforeDot,_,afterDot) => parseFloat(Number(beforeDot.sourceString + "." + afterDot.sourceString))
 }
 
 module.exports = actions
