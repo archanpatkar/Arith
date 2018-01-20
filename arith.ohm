@@ -20,5 +20,11 @@ Arithmetic {
 
   MulExp_power = MulExp "**" number
 
-  number = digit+
+  number = decimal 
+         | whole
+          
+
+  whole = digit+
+
+  decimal = digit+ "." digit+
 }
