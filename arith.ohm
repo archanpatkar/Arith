@@ -1,5 +1,6 @@
 Arithmetic {
   Exp = AddExp
+      | VectorExp
       
   AddExp = AddExp_plus
          | AddExp_minus
@@ -10,6 +11,23 @@ Arithmetic {
          | MulExp_power
          | number
 
+  VectorExp = VectorExp_plus
+            | VectorExp_minus
+            | VectorExp_mul
+            | VectorExp_div
+            | VectorExp_pow
+            | Vector
+
+  VectorExp_plus = Vector "++" Vector
+
+  VectorExp_minus = Vector "--" Vector
+
+  VectorExp_mul = Vector "**" Vector
+
+  VectorExp_div = Vector "//" Vector
+
+  VectorExp_pow = Vector "^^" Vector
+
   AddExp_plus = AddExp "+" MulExp
 
   AddExp_minus = AddExp "-" MulExp
@@ -18,13 +36,18 @@ Arithmetic {
 
   MulExp_div = MulExp "/" number
 
-  MulExp_power = MulExp "**" number
+  MulExp_power = MulExp "^" number
+
+  Sequence = ListOf<number , sep>
+
+  Vector = "[" Sequence "]"
 
   number = decimal 
          | whole
           
-
   whole = digit+
 
   decimal = digit+ "." digit+
+
+  sep = ","
 }
