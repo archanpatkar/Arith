@@ -1,2 +1,2 @@
 # Arith
-### An Arithmetic Language
+### A Pure Arithmetic Language with no side effects
