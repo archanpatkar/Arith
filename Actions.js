@@ -9,6 +9,7 @@ var actions = {
   MulExp_power: (n1,_,n2) => n1.eval() ** n2.eval(),
   Sequence:(a) => a.asIteration().children.map(n => n.eval()), 
   Vector: (_,a,__) => a.eval(),
+  VectorExp: (v) => v.eval(),
   VectorExp_plus: (v1,_,v2) =>{ 
     v1 = v1.eval();
     v2 = v2.eval();
@@ -60,6 +61,7 @@ var actions = {
     return v3;
   },
   Matrices: (_,m,__) => m.eval(),
+  MatricesExp: (m) => m.eval(),
   MatricesExp_plus: (m1,_,m2) =>{ 
     m1 = m1.eval();
     m2 = m2.eval();
