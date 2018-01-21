@@ -22,7 +22,7 @@ Arithmetic {
   MatricesExp = MatricesExp_plus
               | Matrices
 
-  MatricesExp_plus = Matrices "#" Matrices 
+  MatricesExp_plus = MatricesExp "+++" MatricesExp 
 
   VectorExp_plus = VectorExp "++" VectorExp 
 
