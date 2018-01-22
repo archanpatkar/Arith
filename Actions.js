@@ -129,9 +129,9 @@ var actions = {
     {
       return context[v];
     }
-    return "No Such Variable";
+    return undefined;
   },
-  ParameterList: (l) => l.asIteration().children,
+  ParameterList: (l) => l.asIteration().children.map(p => p),
   Function:(name,p1,plist,p2,eq,body) => {
     let func_name = name.sourceString;
     context[func_name].func_paras = plist;
@@ -139,6 +139,7 @@ var actions = {
     let output = `${func_name}(${func_paras}) = ${func_body}`;
     return output;
   },
+  Paren: (_,e,__) => e.eval(),
   number: (digits) => digits.eval(),
   whole: (digits) => Number(digits.sourceString),
   decimal: (beforeDot,_,afterDot) => Number(beforeDot.sourceString + "." + afterDot.sourceString),
