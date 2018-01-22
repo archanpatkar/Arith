@@ -20,12 +20,16 @@ Arithmetic {
             | VectorExp_mul
             | VectorExp_div
             | VectorExp_pow
+            | VectorExp_dot
             | Vector
 
   MatricesExp = MatricesExp_plus
+              | MatricesExp_minus
               | Matrices
 
   MatricesExp_plus = MatricesExp "+++" MatricesExp 
+  
+  MatricesExp_minus = MatricesExp "---" MatricesExp 
 
   VectorExp_plus = VectorExp "++" VectorExp 
 
@@ -36,6 +40,10 @@ Arithmetic {
   VectorExp_div = VectorExp "//" VectorExp
 
   VectorExp_pow = VectorExp "^^" VectorExp
+
+  VectorExp_dot = VectorExp "." VectorExp
+
+  VectorExp_cross = VectorExp "x" VectorExp
 
   AddExp_plus = AddExp "+" AddExp
 
@@ -57,10 +65,13 @@ Arithmetic {
 
   UnaryOperators = Ceil
                  | Floor
+                 | Squareroot
 
   Ceil = "~" AddExp
 
   Floor = "_" AddExp
+
+  Squareroot = "_/" AddExp
 
   BasicFunctions = Sin
                  | Cosine
@@ -88,12 +99,15 @@ Arithmetic {
 
   PI = "pi"
 
-  number = decimal 
+  number = negative
+         | decimal 
          | whole
           
   whole = digit+
 
   decimal = digit+ "." digit+
+
+  negative = "-"number
 
   sep = ","
 
