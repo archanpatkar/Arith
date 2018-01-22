@@ -2,10 +2,13 @@ Arithmetic {
   Exp = AddExp
       | VectorExp
       | MatricesExp
+      | BasicFunctions
       
   AddExp = AddExp_plus
          | AddExp_minus
+         | UnaryOperators 
          | MulExp
+         | Constants
 
   MulExp = MulExp_times
          | MulExp_div
@@ -28,21 +31,21 @@ Arithmetic {
 
   VectorExp_minus = VectorExp "--" VectorExp
 
-  VectorExp_mul = VectorExp "**" Vector
+  VectorExp_mul = VectorExp "**" VectorExp
 
-  VectorExp_div = VectorExp "//" Vector
+  VectorExp_div = VectorExp "//" VectorExp
 
-  VectorExp_pow = VectorExp "^^" Vector
+  VectorExp_pow = VectorExp "^^" VectorExp
 
-  AddExp_plus = AddExp "+" MulExp
+  AddExp_plus = AddExp "+" AddExp
 
-  AddExp_minus = AddExp "-" MulExp
+  AddExp_minus = AddExp "-" AddExp
 
-  MulExp_times = MulExp "*" number
+  MulExp_times = AddExp "*" AddExp
 
-  MulExp_div = MulExp "/" number
+  MulExp_div = AddExp "/" AddExp
 
-  MulExp_power = MulExp "^" number
+  MulExp_power = AddExp "^" AddExp
 
   Sequence = ListOf<number , sep>
 
@@ -51,6 +54,39 @@ Arithmetic {
   Matrices = "<" MultiSequence ">"
 
   MultiSequence = ListOf<Vector,msep>
+
+  UnaryOperators = Ceil
+                 | Floor
+
+  Ceil = "~" AddExp
+
+  Floor = "_" AddExp
+
+  BasicFunctions = Sin
+                 | Cosine
+                 | Tangent
+                 | Secant
+                 | Cotangent
+                 | Cosecant
+
+  Sin = "sin" "(" Exp ")" 
+
+  Cosine = "cos" "(" Exp ")" 
+
+  Tangent = "tan" "(" Exp ")"
+
+  Cotangent = "cot" "(" Exp ")"
+
+  Secant = "sec" "(" Exp ")"
+
+  Cosecant = "cosec" "(" Exp ")"
+
+  Constants = E
+            | PI
+
+  E = "e"
+
+  PI = "pi"
 
   number = decimal 
          | whole
