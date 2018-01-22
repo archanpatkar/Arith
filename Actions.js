@@ -1,4 +1,4 @@
-
+var context = {};
 var actions = {
   Exp: (e) => e.eval(),
   AddExp: (e) => e.eval(),
@@ -118,6 +118,23 @@ var actions = {
   Floor: (_,e) => Math.floor(e.eval()),
   Ceil: (_,e) => Math.ceil(e.eval()),
   Squareroot: (_,e) => Math.sqrt(e.eval()),
+  VariableExp: (e) => e.eval(),
+  Variable: (name,_,e) => {
+    context[name.sourceString] = e.eval();
+    return context[name.sourceString];
+  },
+  ReverseVariable: (exp,_,name) => {
+    context[name.sourceString] = e.eval();
+    return context[name.sourceString];
+  },
+  VariableAccess: (e) => {
+    let v = e.sourceString;
+    if(context.hasOwnProperty(v))
+    {
+      return context[v];
+    }
+    return "No Such Variable";
+  },
   number: (digits) => digits.eval(),
   whole: (digits) => Number(digits.sourceString),
   decimal: (beforeDot,_,afterDot) => Number(beforeDot.sourceString + "." + afterDot.sourceString),
