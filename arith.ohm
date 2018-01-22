@@ -2,16 +2,19 @@ Arithmetic {
   Exp = AddExp
       | VectorExp
       | MatricesExp
-      | BasicFunctions
       | VariableExp
       | Function
-      
+      | Paren
+  
   AddExp = AddExp_plus
          | AddExp_minus
          | UnaryOperators
-         | VariableExp 
+         | VectorExp
          | MulExp
+         | BasicFunctions
          | Constants
+         | VariableExp
+         | Paren
 
   MulExp = MulExp_times
          | MulExp_div
@@ -29,6 +32,8 @@ Arithmetic {
   MatricesExp = MatricesExp_plus
               | MatricesExp_minus
               | Matrices
+
+  Paren = "(" Exp ")"
 
   MatricesExp_plus = MatricesExp "+++" MatricesExp 
   
@@ -102,7 +107,7 @@ Arithmetic {
   VariableExp = Variable
               | VariableAccess
 
-  Function = alnum+ "(" ParameterList ")" "=" Exp
+  Function = alnum+ "(" ParameterList ")" ":=" Exp
 
   ParameterList = ListOf<alnum+,comma>
 
