@@ -3,6 +3,7 @@ Arithmetic {
       | VectorExp
       | MatricesExp
       | BasicFunctions
+      | VariableExp
       
   AddExp = AddExp_plus
          | AddExp_minus
@@ -91,6 +92,14 @@ Arithmetic {
   Secant = "sec" "(" Exp ")"
 
   Cosecant = "cosec" "(" Exp ")"
+
+
+  Variable = alnum+ "=" Exp
+
+  VariableAccess = alnum+
+
+  VariableExp = Variable
+              | VariableAccess
 
   Constants = E
             | PI
