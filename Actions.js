@@ -1,3 +1,4 @@
+
 var actions = {
   Exp: (e) => e.eval(),
   AddExp: (e) => e.eval(),
@@ -77,6 +78,19 @@ var actions = {
     }
     return m3;
   },
+  BasicFunctions:(e) => e.eval(),
+  Sin: (a,b,n,d) => Math.sin(n.eval()),
+  Cosine: (a,b,n,d) => Math.cos(n.eval()),
+  Tangent: (a,b,n,d) => Math.tan(n.eval()),
+  Secant: (a,b,n,d) => 1/Math.cos(n.eval()),
+  Cosecant:(a,b,n,d) => 1/Math.sin(n.eval()),
+  Cotangent:(a,b,n,d) => 1/Math.tan(n.eval()),
+  Constants: (e) => e.eval(),
+  E: (e) => Math.E,
+  PI: (e) => Math.PI,
+  UnaryOperators: (e) => e.eval(),
+  Floor: (_,e) => Math.floor(e.eval()),
+  Ceil: (_,e) => Math.ceil(e.eval()),
   number: (digits) => digits.eval(),
   whole: (digits) => parseInt(digits.sourceString),
   decimal: (beforeDot,_,afterDot) => parseFloat(Number(beforeDot.sourceString + "." + afterDot.sourceString))
