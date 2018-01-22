@@ -9,6 +9,7 @@ var actions = {
   MulExp_div: (n1,_,n2) => n1.eval() / n2.eval(),
   MulExp_power: (n1,_,n2) => n1.eval() ** n2.eval(),
   Sequence:(a) => a.asIteration().children.map(n => n.eval()), 
+  MultiSequence:(a) => a.asIteration().children.map(n => n.eval()), 
   Vector: (_,a,__) => a.eval(),
   VectorExp: (v) => v.eval(),
   VectorExp_plus: (v1,_,v2) =>{ 
@@ -61,6 +62,16 @@ var actions = {
     }
     return v3;
   },
+  VectorExp_dot: (v1,_,v2) => {
+    v1 = v1.eval();
+    v2 = v2.eval();
+    let sum = 0;
+    for(let i in v1)
+    {
+      sum += v1[i] * v2[i];
+    }
+    return sum;
+  },
   Matrices: (_,m,__) => m.eval(),
   MatricesExp: (m) => m.eval(),
   MatricesExp_plus: (m1,_,m2) =>{ 
@@ -73,6 +84,21 @@ var actions = {
       for(let j in m1[i])
       {
         row.push(m1[i][j] + m2[i][j]);
+      }
+      m3.push(row)
+    }
+    return m3;
+  },
+  MatricesExp_minus: (m1,_,m2) =>{ 
+    m1 = m1.eval();
+    m2 = m2.eval();
+    let m3 = [];
+    for(let i in m1)
+    {
+      let row = [];
+      for(let j in m1[i])
+      {
+        row.push(m1[i][j] - m2[i][j]);
       }
       m3.push(row)
     }
@@ -91,9 +117,11 @@ var actions = {
   UnaryOperators: (e) => e.eval(),
   Floor: (_,e) => Math.floor(e.eval()),
   Ceil: (_,e) => Math.ceil(e.eval()),
+  Squareroot: (_,e) => Math.sqrt(e.eval()),
   number: (digits) => digits.eval(),
-  whole: (digits) => parseInt(digits.sourceString),
-  decimal: (beforeDot,_,afterDot) => parseFloat(Number(beforeDot.sourceString + "." + afterDot.sourceString))
+  whole: (digits) => Number(digits.sourceString),
+  decimal: (beforeDot,_,afterDot) => Number(beforeDot.sourceString + "." + afterDot.sourceString),
+  negative: (_,n) => Number("-" + n.sourceString)
 }
 
 module.exports = actions
