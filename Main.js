@@ -24,13 +24,15 @@ console.log(arith.eval("_/4"));
 console.log(arith.eval("<[1,1,1,1]|[1,1,1,1]>"));
 console.log(arith.eval("<[1,1,1,1]|[1,1,1,1]|[3,3,3,3]> +++ <[3,3,3,3]|[3,3,3,3]|[1,1,1,1]>"));
 console.log(arith.eval("<[1,1,1,1]|[1,1,1,1]|[3,3,3,3]> --- <[3,3,3,3]|[3,3,3,3]|[1,1,1,1]>"));
+console.log(arith.eval("x = [10,20,30] ++ [5,5,5]"));
+console.log(arith.eval("x = <[10,20,30]|[40,50,60]>"));
+console.log(arith.eval("50 = x"));
 
 // console.log(arith.eval("(10 * 10) + 40"))
 
-// console.log(arith.eval("<[1,1,1,1]|[1,1,1,1]> +++ <[3,3,3,3]|[3,3,3,3]>"));
-// console.log(arith.eval("<[1,1,1,1]|[1,1,1,1]> --- <[3,3,3,3]|[3,3,3,3]>"));
 // console.log(arith.eval("<[1,1,1,1]|[1,1,1,1]> *** <[3,3,3,3]|[3,3,3,3]>"));
 // console.log(arith.eval("<[1,1,1,1]|[1,1,1,1]> /// <[3,3,3,3]|[3,3,3,3]>"));
+// console.log(arith.eval("[1,1,1,1] * 5"));
 // console.log(arith.eval("<[1,1,1,1]|[1,1,1,1]> * 5"));
 // console.log(arith.eval("<[1,1,1,1]|[1,1,1,1]> . <[3,3,3,3]|[3,3,3,3]>"));
 // console.log(arith.eval("#<[1,1,1,1]|[1,1,1,1]>"));
