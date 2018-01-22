@@ -123,10 +123,6 @@ var actions = {
     context[name.sourceString] = e.eval();
     return context[name.sourceString];
   },
-  ReverseVariable: (exp,_,name) => {
-    context[name.sourceString] = e.eval();
-    return context[name.sourceString];
-  },
   VariableAccess: (e) => {
     let v = e.sourceString;
     if(context.hasOwnProperty(v))
@@ -134,6 +130,14 @@ var actions = {
       return context[v];
     }
     return "No Such Variable";
+  },
+  ParameterList: (l) => l.asIteration().children,
+  Function:(name,p1,plist,p2,eq,body) => {
+    let func_name = name.sourceString;
+    context[func_name].func_paras = plist;
+    context[func_name].func_body = body.sourceString;
+    let output = `${func_name}(${func_paras}) = ${func_body}`;
+    return output;
   },
   number: (digits) => digits.eval(),
   whole: (digits) => Number(digits.sourceString),
