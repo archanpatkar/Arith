@@ -104,6 +104,36 @@ var actions = {
     }
     return m3;
   },
+  MatricesExp_times: (m1,_,m2) =>{ 
+    m1 = m1.eval();
+    m2 = m2.eval();
+    let m3 = [];
+    for(let i in m1)
+    {
+      let row = [];
+      for(let j in m1[i])
+      {
+        row.push(m1[i][j] * m2[i][j]);
+      }
+      m3.push(row)
+    }
+    return m3;
+  },
+  MatricesExp_div: (m1,_,m2) =>{ 
+    m1 = m1.eval();
+    m2 = m2.eval();
+    let m3 = [];
+    for(let i in m1)
+    {
+      let row = [];
+      for(let j in m1[i])
+      {
+        row.push(m1[i][j] / m2[i][j]);
+      }
+      m3.push(row)
+    }
+    return m3;
+  },
   BasicFunctions:(e) => e.eval(),
   Sin: (a,b,n,d) => Math.sin(n.eval()),
   Cosine: (a,b,n,d) => Math.cos(n.eval()),
@@ -134,7 +164,7 @@ var actions = {
   ParameterList: (l) => l.asIteration().children.map(p => p),
   Function:(name,p1,plist,p2,eq,body) => {
     let func_name = name.sourceString;
-    context[func_name].func_paras = plist;
+    context[func_name].func_paras = plist.eval();
     context[func_name].func_body = body.sourceString;
     let output = `${func_name}(${func_paras}) = ${func_body}`;
     return output;
