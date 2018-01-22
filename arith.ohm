@@ -5,6 +5,11 @@ Arithmetic {
       | VariableExp
       | Function
       | Paren
+
+  MulExp = MulExp_times
+         | MulExp_div
+         | MulExp_power
+         | number
   
   AddExp = AddExp_plus
          | AddExp_minus
@@ -16,11 +21,6 @@ Arithmetic {
          | VariableExp
          | Paren
 
-  MulExp = MulExp_times
-         | MulExp_div
-         | MulExp_power
-         | number
-
   VectorExp = VectorExp_plus
             | VectorExp_minus
             | VectorExp_mul
@@ -31,6 +31,8 @@ Arithmetic {
 
   MatricesExp = MatricesExp_plus
               | MatricesExp_minus
+              | MatricesExp_div
+              | MatricesExp_times
               | Matrices
 
   Paren = "(" Exp ")"
@@ -38,6 +40,10 @@ Arithmetic {
   MatricesExp_plus = MatricesExp "+++" MatricesExp 
   
   MatricesExp_minus = MatricesExp "---" MatricesExp 
+
+  MatricesExp_times = MatricesExp "***" MatricesExp
+
+  MatricesExp_div = MatricesExp "///" MatricesExp 
 
   VectorExp_plus = VectorExp "++" VectorExp 
 
@@ -57,11 +63,11 @@ Arithmetic {
 
   AddExp_minus = AddExp "-" AddExp
 
-  MulExp_times = AddExp "*" AddExp
+  MulExp_times = AddExp "*" MulExp
 
-  MulExp_div = AddExp "/" AddExp
+  MulExp_div = AddExp "/" MulExp
 
-  MulExp_power = AddExp "^" AddExp
+  MulExp_power = AddExp "^" MulExp
 
   Sequence = ListOf<number , comma>
 
@@ -107,9 +113,9 @@ Arithmetic {
   VariableExp = Variable
               | VariableAccess
 
-  Function = alnum+ "(" ParameterList ")" ":=" Exp
+  Function = "function" "(" ParameterList ")" ":=" Exp
 
-  ParameterList = ListOf<alnum+,comma>
+  ParameterList = ListOf<alnum,comma>
 
   Constants = E
             | PI
