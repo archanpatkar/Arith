@@ -1,2 +1,2 @@
 # Arith
-### A Pure Arithmetic(➕➖✖️➗) Language with ⛔ No Side Effects for Numerical Analysis
+### A Pure Arithmetic(➕➖✖️➗) Language with ⛔ No Side Effects for Numerical Analysis 📈
