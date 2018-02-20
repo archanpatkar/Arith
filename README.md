@@ -7,9 +7,9 @@
 
 ## Language Referance
 
-### 1. `Basic Arithmetic`
-### 2. `Trigonometry`
-### 3. `Statistics`
-### 4. `Vectors`
-### 5. `Matrices`
-### 6. `Calculus` (Under Construction)
+#### 1. `Basic Arithmetic`
+#### 2. `Trigonometry`
+#### 3. `Statistics`
+#### 4. `Vectors`
+#### 5. `Matrices`
+#### 6. `Calculus`(Under Construction)
