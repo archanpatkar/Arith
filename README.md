@@ -1,10 +1,6 @@
 # Arith
 ### A Pure Arithmetic(➕➖✖️➗) Language with ⛔ No Side Effects for Numerical Analysis 📈
 
-## Installation
-
-### `npm install -g arith-cli` or Download [ArithBook]()
-
 ## Language Referance
 
 #### 1. `Basic Arithmetic`
